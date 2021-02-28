@@ -1,0 +1,26 @@
+.nav-header {
+  width: 100vw;
+  height: 80px;
+  background-color: #333;
+  color: white;
+}
+.nav-header ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  width: 100%;
+  gap: 2em;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  margin: 0;
+}
+.nav-header a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-header a:hover {
+  text-decoration: underline;
+}
