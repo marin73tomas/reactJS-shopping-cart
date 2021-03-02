@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const ProductController = require("../controllers/ProductController");
 
-router.get("/", (req, res) => {
-  res.json(ProductController.getAllProducts());
+router.get("/", async (req, res) => {
+  res.json(await ProductController.getAllProducts());
   res.end();
 });
 
-router.post("/new", async (req, res) => {
+router.post("/new", (req, res) => {
   res.json(ProductController.addNewProduct(req.body));
   res.end();
 });

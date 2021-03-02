@@ -10,6 +10,8 @@ mongoose.connect(
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
+app.use(express.static("public"));
+
 app.use(express.json());
 app.use("/products", productsRouter);
 app.use(cors());

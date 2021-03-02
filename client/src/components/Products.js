@@ -9,15 +9,14 @@ import Typography from "@material-ui/core/Typography";
 
 export default class Products extends Component {
   async componentDidMount() {
+    this.setState({ loading: true });
     try {
       let response = await fetch("/products/");
       const data = await response.json();
       console.log(data);
-      this.setState((prev) => {
-        return {
-          ...prev,
-          products: JSON.parse(data),
-        };
+      this.setState({
+        products: data,
+        loading: false,
       });
     } catch (error) {
       alert(error);
@@ -27,18 +26,22 @@ export default class Products extends Component {
     super(props);
     this.state = {
       products: [],
+      loading: false,
     };
   }
   render() {
-    if (this.state.products) {
-      const products = this.state.products.map((e) => {
-        <Card maxWidth="sm">
+    if (this.state.loading) {
+      return <div> Loading... </div>;
+    }
+    if (Array.isArray(this.state.products)) {
+      var products = this.state.products.map((e, idx) => (
+        <Card key={idx}>
           <CardActionArea>
             <CardMedia
               component="img"
               alt={e.title}
               height="140"
-              image={`http://localhost:5000/${e.imageLink}`}
+              image={`http://localhost:5000/empty.jpg`}
               title={e.title}
             />
             <CardContent>
@@ -55,8 +58,9 @@ export default class Products extends Component {
               ADD TO CART
             </Button>
           </CardActions>
-        </Card>;
-      });
+        </Card>
+      ));
+
       return <div>{products}</div>;
     } else {
       return <div>No products found</div>;

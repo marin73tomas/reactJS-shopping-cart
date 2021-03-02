@@ -19,16 +19,24 @@ async function addNewProduct(data) {
 async function getProduct(id) {
   try {
     return (
-      db.products.find({ id }).pretty() || `no product with ID: ${id} found`
+      db.collection("products").find({ id }).pretty() ||
+      `no product with ID: ${id} found`
     );
   } catch (error) {
     return error;
   }
 }
 
-async function getAllProducts() {
+function getAllProducts() {
   try {
-    return db.products.find().pretty();
+    const data = Product.find().then((err, result) => {
+      if (err) {
+        return err;
+      } else {
+        return result;
+      }
+    });
+    return data;
   } catch (error) {
     return error;
   }
