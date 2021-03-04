@@ -6,12 +6,15 @@ import NewProduct from "./pages/NewProduct";
 import Product from "./components/Product";
 import Header from "./components/Header";
 import { Container } from "@material-ui/core";
+import { createStore } from "redux";
+
+export const store = createStore();
 
 export default function App() {
   return (
     <>
       <Header />
-      <Container maxWidth="sm">
+      <Container maxWidth="md" style={{ marginBottom: "30px !important" }}>
         <Switch>
           <Route exact path="/" component={StorePage} />
           <Route path="/products/new" component={NewProduct} />

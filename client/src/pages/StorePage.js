@@ -10,7 +10,7 @@ export default function HomePage() {
       <Typography
         component="h1"
         variant="h1"
-        style={{ fontSize: "30px", textAlign: "center" }}
+        style={{ fontSize: "30px", textAlign: "center", margin: "30px 0 " }}
       >
         Redux Shopping Cart
       </Typography>
