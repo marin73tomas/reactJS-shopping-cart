@@ -7,6 +7,11 @@ router.get("/", async (req, res) => {
   res.end();
 });
 
+router.get("/", async (req, res) => {
+  res.json(await ProductController.getProductsByTitle());
+  res.end();
+});
+
 router.post("/new", (req, res) => {
   res.json(ProductController.addNewProduct(req.body));
   res.end();

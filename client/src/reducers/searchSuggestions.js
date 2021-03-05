@@ -1,4 +1,9 @@
-const initialState = [];
+const initialState = [
+  {
+    id: 2,
+    title: "test",
+  },
+];
 
 export default function searchSuggestionsReducer(
   state = initialState,

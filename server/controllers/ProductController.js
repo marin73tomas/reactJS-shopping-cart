@@ -42,8 +42,24 @@ function getAllProducts() {
   }
 }
 
+function getProductsByTitle(name) {
+  try {
+    const data = Product.find({ title: name }).then((err, result) => {
+      if (err) {
+        return err;
+      } else {
+        return result;
+      }
+    });
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+
 module.exports = {
   addNewProduct,
   getProduct,
   getAllProducts,
+  getProductsByTitle,
 };
