@@ -5,6 +5,11 @@ export default function searchResultsReducer(
   { type, payload }
 ) {
   switch (type) {
+    case "findResults": {
+      return {
+        results: payload,
+      };
+    }
     default:
       return state;
   }

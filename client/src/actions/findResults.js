@@ -1,9 +1,20 @@
-export const type = "findResults";
+const type = "findResults";
 
-const findResults = (text) => {
+const getProductsByTitle = async (title) => {
+  try {
+    console.log(title);
+    const response = await fetch(`/products/bytitle/${title}`);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    alert(error);
+  }
+};
+const findResults = (title) => {
   return {
     type,
-    payload: text,
+    payload: getProductsByTitle(title),
   };
 };
 export default findResults;

@@ -1,15 +1,27 @@
-import React from "react";
 import { connect } from "react-redux";
-const Results = () => {
-  const { suggestions } = this.props;
-  return <div>{suggestions}</div>;
-};
+import findResults from "../actions/findResults";
+import React, { Component } from "react";
+
+class Results extends Component {
+  componentDidMount() {
+    const title = this.props.match.params.title;
+    this.props.findResults(title);
+  }
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const { results } = this.props;
+    return <div>{results}</div>;
+  }
+}
+
 const mapStateToProps = (state) => {
   return {
-    suggestions: state.suggestions,
+    results: getProduct(state),
   };
 };
-const wrapper = connect(mapStateToProps);
-const component = wrapper(Results);
-
-export default component;
+/* const mapDispatchToProps = (dispatch) => {
+    const dispactFunction = 
+} */
+export default connect(mapStateToProps, { findResults })(Results);

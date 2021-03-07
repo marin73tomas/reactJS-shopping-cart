@@ -7,8 +7,8 @@ router.get("/", async (req, res) => {
   res.end();
 });
 
-router.get("/", async (req, res) => {
-  res.json(await ProductController.getProductsByTitle());
+router.get("/bytitle/:title", async (req, res) => {
+  res.json(await ProductController.getProductsByTitle(req.params.title));
   res.end();
 });
 
